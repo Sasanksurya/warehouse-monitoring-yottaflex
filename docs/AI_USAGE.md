@@ -34,6 +34,12 @@ and a regeneration-twice checksum comparison ([reproducibility_report.json](repr
 
 ## Things I did not verify / honest caveats
 
+   ## What I did myself
+   - Downloaded and ran the project on Windows, installed Python and pytest.
+   - Ran the starter generation, validation and evaluation, and all 51 tests.
+   - Read the README, data dictionary, monitoring rules and assumptions.
+   - Found and reported the Windows manifest-path test failure, which was then fixed.
+
 * The numbers in the data are synthetic. Domain values (product temperature bands, door limits, rates) are plausible
   engineering choices, not drawn from a real facility or a specific regulation.
 * Edge-case detectors reach precision = recall = 1.0 because they are exact rule checks on structured data and the
