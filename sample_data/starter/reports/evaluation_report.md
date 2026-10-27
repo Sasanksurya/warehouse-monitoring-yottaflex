@@ -1,0 +1,245 @@
+# Evaluation report
+
+Detectors in part A read only the input tables; `ground_truth/` is used only to score them.
+
+## A. Injected edge cases: detector vs ground truth
+
+| Edge case | Truth | Flagged | TP | FP | FN | Precision | Recall |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| INCOMPATIBLE_ZONE_ASSIGNMENT | 4 | 4 | 4 | 0 | 0 | 1.0 | 1.0 |
+| SENSOR_MULTI_ZONE_NO_RATIONALE | 1 | 1 | 1 | 0 | 0 | 1.0 | 1.0 |
+| ALARM_NOT_LINKED_TO_LOTS | 1 | 1 | 1 | 0 | 0 | 1.0 | 1.0 |
+| GAP_TREATED_AS_NORMAL | 1 | 1 | 1 | 0 | 0 | 1.0 | 1.0 |
+
+Undeclared missing reading intervals: 92. Alarms with partially missing lot links: 0 (19 of 171 expected alarm-lot pairs absent).
+
+## B. Alarm quality
+
+Alarms: 17; false-alarm rate (unexplained + drift-induced + spike-induced): 0.0
+
+| Alarm category | Count |
+|---|---:|
+| matched_injected_condition | 13 |
+| natural_door_overrun_by_rule | 4 |
+
+| Injected condition | Expected | Detected | Recall | TTD median (min) | TTD p90 (min) |
+|---|---:|---:|---:|---:|---:|
+| DOOR_LEFT_OPEN | 1 | 1 | 1.0 | 4.0 | 4.0 |
+| HUMIDITY_EXCURSION | 1 | 1 | 1.0 | 30.0 | 30.0 |
+| OCCUPANCY_EXCEEDED | 2 | 2 | 1.0 | 0.0 | 0.0 |
+| SENSOR_DRIFT | 2 | 2 | 1.0 | 5415.0 | 6027.0 |
+| SENSOR_OUTAGE | 4 | 4 | 1.0 | 45.0 | 45.0 |
+| TEMP_BOUNDARY_MIN_PERSISTENCE | 1 | 1 | 1.0 | 15.0 | 15.0 |
+| TEMP_HIGH_EXCURSION | 1 | 1 | 1.0 | 30.0 | 30.0 |
+| TEMP_LOW_EXCURSION | 1 | 1 | 1.0 | 30.0 | 30.0 |
+
+Transient single-reading spikes that wrongly alarmed: 0. Drift culprit-sensor attribution accuracy: 1.0.
+
+## C. Workflow KPIs
+
+```json
+{
+ "alarm_status_counts": {
+  "CLOSED": 17
+ },
+ "time_to_acknowledge_min": {
+  "median": 8.67,
+  "p90": 32.37
+ },
+ "time_to_close_h": {
+  "median": 4.63,
+  "p90": 67.03
+ },
+ "critical_alarms_inspected_share": 1.0,
+ "inspections": 12,
+ "inspection_outcomes": {
+  "CONNECTIVITY_FAULT": 3,
+  "EQUIPMENT_FAULT": 3,
+  "DOOR_PROCEDURE": 3,
+  "SENSOR_FAULT": 2,
+  "NO_FAULT_FOUND": 1
+ },
+ "remediation_actions": {
+  "RESTORE_CONNECTIVITY": 3,
+  "REPAIR_EQUIPMENT": 3,
+  "DOOR_SEAL_REPAIR": 3,
+  "RECALIBRATE_SENSOR": 2,
+  "QUARANTINE_LOT": 17,
+  "DISPOSE_LOT": 15,
+  "RELEASE_LOT": 2
+ },
+ "lots_with_alarm_impact": 114,
+ "impact_levels": {
+  "UNVERIFIED": 82,
+  "NONE": 25,
+  "MINOR": 28,
+  "MAJOR": 17
+ },
+ "impact_dispositions": {
+  "NO_ACTION": 135,
+  "HOLD_PLACED": 17
+ },
+ "units_quarantined": 5154,
+ "units_disposed": 4523,
+ "lot_final_states": {
+  "SHIPPED": 227,
+  "STORED": 158,
+  "DISPOSED": 15
+ },
+ "lot_actions_linked_to_impact_share": 1.0
+}
+```
+
+## D. Distributions
+
+```json
+{
+ "readings_total": 53603,
+ "readings_by_sensor_type": {
+  "HUM": 13413,
+  "OCC": 13410,
+  "TEMP": 26780
+ },
+ "reading_completeness": 0.9971,
+ "per_zone_type_stats": {
+  "AMBIENT/HUM": {
+   "n": 2665,
+   "mean": 45.22,
+   "std": 2.36,
+   "share_outside_threshold": 0.0
+  },
+  "AMBIENT/OCC": {
+   "n": 2664,
+   "mean": 3.01,
+   "std": 2.79,
+   "share_outside_threshold": 0.0
+  },
+  "AMBIENT/TEMP": {
+   "n": 5330,
+   "mean": 19.94,
+   "std": 1.19,
+   "share_outside_threshold": 0.00113
+  },
+  "COLD/HUM": {
+   "n": 2686,
+   "mean": 55.2,
+   "std": 2.35,
+   "share_outside_threshold": 0.0
+  },
+  "COLD/OCC": {
+   "n": 2682,
+   "mean": 0.98,
+   "std": 1.19,
+   "share_outside_threshold": 0.0
+  },
+  "COLD/TEMP": {
+   "n": 5323,
+   "mean": 5.04,
+   "std": 0.46,
+   "share_outside_threshold": 0.00075
+  },
+  "COOL/HUM": {
+   "n": 2686,
+   "mean": 70.39,
+   "std": 2.49,
+   "share_outside_threshold": 0.0
+  },
+  "COOL/OCC": {
+   "n": 2688,
+   "mean": 1.01,
+   "std": 1.24,
+   "share_outside_threshold": 0.00112
+  },
+  "COOL/TEMP": {
+   "n": 5376,
+   "mean": 11.89,
+   "std": 0.88,
+   "share_outside_threshold": 0.00037
+  },
+  "FROZEN/HUM": {
+   "n": 2688,
+   "mean": 65.01,
+   "std": 2.61,
+   "share_outside_threshold": 0.00149
+  },
+  "FROZEN/OCC": {
+   "n": 2688,
+   "mean": 0.5,
+   "std": 0.78,
+   "share_outside_threshold": 0.0
+  },
+  "FROZEN/TEMP": {
+   "n": 5376,
+   "mean": -20.26,
+   "std": 1.45,
+   "share_outside_threshold": 0.00874
+  },
+  "HOT/HUM": {
+   "n": 2688,
+   "mean": 30.13,
+   "std": 2.29,
+   "share_outside_threshold": 0.0
+  },
+  "HOT/OCC": {
+   "n": 2688,
+   "mean": 0.75,
+   "std": 1.01,
+   "share_outside_threshold": 0.00074
+  },
+  "HOT/TEMP": {
+   "n": 5375,
+   "mean": 34.97,
+   "std": 1.02,
+   "share_outside_threshold": 0.00037
+  }
+ },
+ "door_events": {
+  "total": 1713,
+  "per_zone_per_day_mean": 12.24,
+  "duration_s_p50": 112.0,
+  "duration_s_p95": 280.0,
+  "share_over_limit": 0.0029
+ },
+ "lots": {
+  "total": 400,
+  "by_category": {
+   "FROZEN_FOOD": 65,
+   "DRY_GOODS": 93,
+   "ELECTRONICS": 52,
+   "DAIRY": 71,
+   "PHARMA_COLD": 45,
+   "PRODUCE": 48,
+   "CURING_MATERIALS": 26
+  },
+  "dwell_days_p50": 8.38,
+  "dwell_days_p90": 19.0,
+  "zone_types_used": {
+   "FROZEN": 65,
+   "AMBIENT": 144,
+   "COLD": 116,
+   "COOL": 48,
+   "HOT": 27
+  }
+ },
+ "sensor_gaps": {
+  "declared": 8,
+  "missed_readings_p50": 4.0,
+  "missed_readings_p90": 17.7
+ },
+ "ground_truth_issue_counts": {
+  "ALARM_NOT_LINKED_TO_LOTS": 1,
+  "DOOR_LEFT_OPEN": 1,
+  "GAP_TREATED_AS_NORMAL": 1,
+  "HUMIDITY_EXCURSION": 1,
+  "INCOMPATIBLE_ZONE_ASSIGNMENT": 4,
+  "OCCUPANCY_EXCEEDED": 2,
+  "SENSOR_DRIFT": 2,
+  "SENSOR_MULTI_ZONE_NO_RATIONALE": 1,
+  "SENSOR_OUTAGE": 8,
+  "TEMP_BOUNDARY_MIN_PERSISTENCE": 1,
+  "TEMP_HIGH_EXCURSION": 1,
+  "TEMP_LOW_EXCURSION": 1,
+  "TRANSIENT_SPIKE": 4
+ }
+}
+```

@@ -1,0 +1,540 @@
+[
+ {
+  "truth_id": "GT-000001",
+  "issue_type": "INCOMPATIBLE_ZONE_ASSIGNMENT",
+  "entity_type": "LOT",
+  "entity_id": "LOT-2026-000100",
+  "zone_id": "ZONE-WH-002-003",
+  "sensor_id": "",
+  "window_start": "2026-08-20T22:16:54Z",
+  "window_end": "",
+  "expected_decision": "REJECT_PUTAWAY_OR_RELOCATE",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "requirement_band_c": [
+    10,
+    30
+   ],
+   "requirement_id": "REQ-DRY_GOODS-01",
+   "valid_zone_before_injection": "ZONE-WH-001-002",
+   "zone_band_c": [
+    8,
+    15
+   ],
+   "zone_type": "COOL"
+  }
+ },
+ {
+  "truth_id": "GT-000002",
+  "issue_type": "INCOMPATIBLE_ZONE_ASSIGNMENT",
+  "entity_type": "LOT",
+  "entity_id": "LOT-2026-000194",
+  "zone_id": "ZONE-WH-002-003",
+  "sensor_id": "",
+  "window_start": "2026-08-28T14:46:17Z",
+  "window_end": "",
+  "expected_decision": "REJECT_PUTAWAY_OR_RELOCATE",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "requirement_band_c": [
+    10,
+    30
+   ],
+   "requirement_id": "REQ-DRY_GOODS-01",
+   "valid_zone_before_injection": "ZONE-WH-001-002",
+   "zone_band_c": [
+    8,
+    15
+   ],
+   "zone_type": "COOL"
+  }
+ },
+ {
+  "truth_id": "GT-000003",
+  "issue_type": "INCOMPATIBLE_ZONE_ASSIGNMENT",
+  "entity_type": "LOT",
+  "entity_id": "LOT-2026-000223",
+  "zone_id": "ZONE-WH-002-002",
+  "sensor_id": "",
+  "window_start": "2026-08-30T21:14:27Z",
+  "window_end": "2026-09-01T17:00:12Z",
+  "expected_decision": "REJECT_PUTAWAY_OR_RELOCATE",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "requirement_band_c": [
+    8,
+    15
+   ],
+   "requirement_id": "REQ-PRODUCE-01",
+   "valid_zone_before_injection": "ZONE-WH-001-004",
+   "zone_band_c": [
+    15,
+    25
+   ],
+   "zone_type": "AMBIENT"
+  }
+ },
+ {
+  "truth_id": "GT-000004",
+  "issue_type": "SENSOR_MULTI_ZONE_NO_RATIONALE",
+  "entity_type": "SENSOR",
+  "entity_id": "SNS-ZONE-WH-001-001-HUM-01",
+  "zone_id": "ZONE-WH-001-001",
+  "sensor_id": "SNS-ZONE-WH-001-001-HUM-01",
+  "window_start": "2026-09-01T00:00:00Z",
+  "window_end": "",
+  "expected_decision": "REQUIRE_RATIONALE_OR_REMOVE_MAPPING",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "home_zone": "ZONE-WH-001-001",
+   "second_zone": "ZONE-WH-001-004"
+  }
+ },
+ {
+  "truth_id": "GT-000005",
+  "issue_type": "SENSOR_DRIFT",
+  "entity_type": "SENSOR",
+  "entity_id": "SNS-ZONE-WH-002-003-TEMP-01",
+  "zone_id": "ZONE-WH-002-003",
+  "sensor_id": "SNS-ZONE-WH-002-003-TEMP-01",
+  "window_start": "2026-09-01T17:00:00Z",
+  "window_end": "2026-09-12T09:20:44Z",
+  "expected_decision": "RAISE_ALARM_AND_RECALIBRATE",
+  "expected_alarm_types": "SENSOR_DRIFT",
+  "linked_entities": "",
+  "details": {
+   "cause": "SENSOR_FAULT",
+   "magnitude_c": 2.47,
+   "ramp_days": 7.41,
+   "recalibrated_at": "2026-09-12T09:20:44Z"
+  }
+ },
+ {
+  "truth_id": "GT-000006",
+  "issue_type": "OCCUPANCY_EXCEEDED",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-001-004-20260901T183000Z",
+  "zone_id": "ZONE-WH-001-004",
+  "sensor_id": "",
+  "window_start": "2026-09-01T18:30:00Z",
+  "window_end": "2026-09-01T19:15:00Z",
+  "expected_decision": "RAISE_ALARM",
+  "expected_alarm_types": "OCCUPANCY_LIMIT",
+  "linked_entities": "",
+  "details": {
+   "limit": 8,
+   "steps": 3
+  }
+ },
+ {
+  "truth_id": "GT-000007",
+  "issue_type": "SENSOR_DRIFT",
+  "entity_type": "SENSOR",
+  "entity_id": "SNS-ZONE-WH-001-003-TEMP-01",
+  "zone_id": "ZONE-WH-001-003",
+  "sensor_id": "SNS-ZONE-WH-001-003-TEMP-01",
+  "window_start": "2026-09-01T18:30:00Z",
+  "window_end": "2026-09-11T21:40:07Z",
+  "expected_decision": "RAISE_ALARM_AND_RECALIBRATE",
+  "expected_alarm_types": "SENSOR_DRIFT",
+  "linked_entities": "",
+  "details": {
+   "cause": "SENSOR_FAULT",
+   "magnitude_c": -3.91,
+   "ramp_days": 6.93,
+   "recalibrated_at": "2026-09-11T21:40:07Z"
+  }
+ },
+ {
+  "truth_id": "GT-000008",
+  "issue_type": "TRANSIENT_SPIKE",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-002-004-20260901T210000Z",
+  "zone_id": "ZONE-WH-002-004",
+  "sensor_id": "",
+  "window_start": "2026-09-01T21:00:00Z",
+  "window_end": "2026-09-01T21:15:00Z",
+  "expected_decision": "NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "SENSOR_NOISE",
+   "margin_beyond_limit_c": 1.53,
+   "steps": 1
+  }
+ },
+ {
+  "truth_id": "GT-000009",
+  "issue_type": "OCCUPANCY_EXCEEDED",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-001-005-20260902T123000Z",
+  "zone_id": "ZONE-WH-001-005",
+  "sensor_id": "",
+  "window_start": "2026-09-02T12:30:00Z",
+  "window_end": "2026-09-02T13:00:00Z",
+  "expected_decision": "RAISE_ALARM",
+  "expected_alarm_types": "OCCUPANCY_LIMIT",
+  "linked_entities": "",
+  "details": {
+   "limit": 6,
+   "steps": 2
+  }
+ },
+ {
+  "truth_id": "GT-000010",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-002-004-TEMP-01-20260902T224500Z",
+  "zone_id": "ZONE-WH-002-004",
+  "sensor_id": "SNS-ZONE-WH-002-004-TEMP-01",
+  "window_start": "2026-09-02T22:45:00Z",
+  "window_end": "2026-09-03T08:15:00Z",
+  "expected_decision": "RAISE_SENSOR_GAP_ALARM",
+  "expected_alarm_types": "SENSOR_GAP",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 38
+  }
+ },
+ {
+  "truth_id": "GT-000011",
+  "issue_type": "HUMIDITY_EXCURSION",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-002-005-20260903T134500Z",
+  "zone_id": "ZONE-WH-002-005",
+  "sensor_id": "",
+  "window_start": "2026-09-03T13:45:00Z",
+  "window_end": "2026-09-03T15:15:00Z",
+  "expected_decision": "RAISE_ALARM",
+  "expected_alarm_types": "HUMIDITY_HIGH",
+  "linked_entities": "",
+  "details": {
+   "cause": "EQUIPMENT_FAULT",
+   "margin_beyond_limit_pct": 12.25,
+   "steps": 6
+  }
+ },
+ {
+  "truth_id": "GT-000012",
+  "issue_type": "ALARM_NOT_LINKED_TO_LOTS",
+  "entity_type": "ALARM",
+  "entity_id": "ALM-2026-000004",
+  "zone_id": "ZONE-WH-002-005",
+  "sensor_id": "SNS-ZONE-WH-002-005-HUM-01",
+  "window_start": "2026-09-03T14:00:00Z",
+  "window_end": "2026-09-03T15:00:00Z",
+  "expected_decision": "LINK_AFFECTED_LOTS",
+  "expected_alarm_types": "",
+  "linked_entities": "LOT-2026-000072|LOT-2026-000112|LOT-2026-000118|LOT-2026-000122|LOT-2026-000130|LOT-2026-000138|LOT-2026-000143|LOT-2026-000149|LOT-2026-000156|LOT-2026-000164|LOT-2026-000169|LOT-2026-000203|LOT-2026-000204|LOT-2026-000215|LOT-2026-000227|LOT-2026-000233|LOT-2026-000234|LOT-2026-000238|LOT-2026-000246",
+  "details": {
+   "alarm_type": "HUMIDITY_HIGH",
+   "expected_lot_count": 19
+  }
+ },
+ {
+  "truth_id": "GT-000013",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-002-004-OCC-01-20260904T110000Z",
+  "zone_id": "ZONE-WH-002-004",
+  "sensor_id": "SNS-ZONE-WH-002-004-OCC-01",
+  "window_start": "2026-09-04T11:00:00Z",
+  "window_end": "2026-09-04T12:30:00Z",
+  "expected_decision": "RAISE_SENSOR_GAP_ALARM",
+  "expected_alarm_types": "SENSOR_GAP",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 6
+  }
+ },
+ {
+  "truth_id": "GT-000014",
+  "issue_type": "TRANSIENT_SPIKE",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-001-005-20260905T164500Z",
+  "zone_id": "ZONE-WH-001-005",
+  "sensor_id": "",
+  "window_start": "2026-09-05T16:45:00Z",
+  "window_end": "2026-09-05T17:00:00Z",
+  "expected_decision": "NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "SENSOR_NOISE",
+   "margin_beyond_limit_c": 2.76,
+   "steps": 1
+  }
+ },
+ {
+  "truth_id": "GT-000015",
+  "issue_type": "TEMP_BOUNDARY_MIN_PERSISTENCE",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-002-002-20260905T220000Z",
+  "zone_id": "ZONE-WH-002-002",
+  "sensor_id": "",
+  "window_start": "2026-09-05T22:00:00Z",
+  "window_end": "2026-09-05T22:30:00Z",
+  "expected_decision": "RAISE_ALARM",
+  "expected_alarm_types": "TEMP_LOW",
+  "linked_entities": "",
+  "details": {
+   "cause": "EQUIPMENT_FAULT",
+   "margin_beyond_limit_c": 2.34,
+   "steps": 2
+  }
+ },
+ {
+  "truth_id": "GT-000016",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-001-001-TEMP-02-20260906T211500Z",
+  "zone_id": "ZONE-WH-001-001",
+  "sensor_id": "SNS-ZONE-WH-001-001-TEMP-02",
+  "window_start": "2026-09-06T21:15:00Z",
+  "window_end": "2026-09-06T22:45:00Z",
+  "expected_decision": "RAISE_SENSOR_GAP_ALARM",
+  "expected_alarm_types": "SENSOR_GAP",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 6
+  }
+ },
+ {
+  "truth_id": "GT-000017",
+  "issue_type": "INCOMPATIBLE_ZONE_ASSIGNMENT",
+  "entity_type": "LOT",
+  "entity_id": "LOT-2026-000296",
+  "zone_id": "ZONE-WH-001-005",
+  "sensor_id": "",
+  "window_start": "2026-09-07T00:32:22Z",
+  "window_end": "2026-09-11T02:35:57Z",
+  "expected_decision": "REJECT_PUTAWAY_OR_RELOCATE",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "requirement_band_c": [
+    8,
+    15
+   ],
+   "requirement_id": "REQ-PRODUCE-01",
+   "valid_zone_before_injection": "ZONE-WH-002-003",
+   "zone_band_c": [
+    30,
+    40
+   ],
+   "zone_type": "HOT"
+  }
+ },
+ {
+  "truth_id": "GT-000018",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-001-001-HUM-01-20260907T080000Z",
+  "zone_id": "ZONE-WH-001-001",
+  "sensor_id": "SNS-ZONE-WH-001-001-HUM-01",
+  "window_start": "2026-09-07T08:00:00Z",
+  "window_end": "2026-09-07T08:30:00Z",
+  "expected_decision": "RECORD_GAP_NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 2
+  }
+ },
+ {
+  "truth_id": "GT-000019",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-001-002-OCC-01-20260907T104500Z",
+  "zone_id": "ZONE-WH-001-002",
+  "sensor_id": "SNS-ZONE-WH-001-002-OCC-01",
+  "window_start": "2026-09-07T10:45:00Z",
+  "window_end": "2026-09-07T11:00:00Z",
+  "expected_decision": "RECORD_GAP_NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 1
+  }
+ },
+ {
+  "truth_id": "GT-000020",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-001-005-TEMP-02-20260907T233000Z",
+  "zone_id": "ZONE-WH-001-005",
+  "sensor_id": "SNS-ZONE-WH-001-005-TEMP-02",
+  "window_start": "2026-09-07T23:30:00Z",
+  "window_end": "2026-09-07T23:45:00Z",
+  "expected_decision": "RECORD_GAP_NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 1
+  }
+ },
+ {
+  "truth_id": "GT-000021",
+  "issue_type": "GAP_TREATED_AS_NORMAL",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "HGAP-ZONE-WH-001-002-20260910T074500Z",
+  "zone_id": "ZONE-WH-001-002",
+  "sensor_id": "",
+  "window_start": "2026-09-10T07:45:00Z",
+  "window_end": "2026-09-10T13:30:00Z",
+  "expected_decision": "RAISE_SENSOR_GAP_ALARM_AND_INSPECT",
+  "expected_alarm_types": "SENSOR_GAP",
+  "linked_entities": "",
+  "details": {
+   "hidden_peak_offset_c": 10.81,
+   "missed_readings": 23,
+   "silent_sensors": [
+    "SNS-ZONE-WH-001-002-TEMP-01",
+    "SNS-ZONE-WH-001-002-TEMP-02",
+    "SNS-ZONE-WH-001-002-HUM-01",
+    "SNS-ZONE-WH-001-002-OCC-01"
+   ]
+  }
+ },
+ {
+  "truth_id": "GT-000022",
+  "issue_type": "TEMP_HIGH_EXCURSION",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-001-003-20260910T141500Z",
+  "zone_id": "ZONE-WH-001-003",
+  "sensor_id": "",
+  "window_start": "2026-09-10T14:15:00Z",
+  "window_end": "2026-09-10T18:15:00Z",
+  "expected_decision": "RAISE_ALARM",
+  "expected_alarm_types": "TEMP_HIGH",
+  "linked_entities": "",
+  "details": {
+   "cause": "EQUIPMENT_FAULT",
+   "margin_beyond_limit_c": 5.14,
+   "mode": "fail",
+   "steps": 16
+  }
+ },
+ {
+  "truth_id": "GT-000023",
+  "issue_type": "TRANSIENT_SPIKE",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-001-001-20260911T031500Z",
+  "zone_id": "ZONE-WH-001-001",
+  "sensor_id": "",
+  "window_start": "2026-09-11T03:15:00Z",
+  "window_end": "2026-09-11T03:30:00Z",
+  "expected_decision": "NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "SENSOR_NOISE",
+   "margin_beyond_limit_c": 1.22,
+   "steps": 1
+  }
+ },
+ {
+  "truth_id": "GT-000024",
+  "issue_type": "TRANSIENT_SPIKE",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-002-002-20260911T153000Z",
+  "zone_id": "ZONE-WH-002-002",
+  "sensor_id": "",
+  "window_start": "2026-09-11T15:30:00Z",
+  "window_end": "2026-09-11T15:45:00Z",
+  "expected_decision": "NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "SENSOR_NOISE",
+   "margin_beyond_limit_c": 2.27,
+   "steps": 1
+  }
+ },
+ {
+  "truth_id": "GT-000025",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-002-004-TEMP-02-20260912T133000Z",
+  "zone_id": "ZONE-WH-002-004",
+  "sensor_id": "SNS-ZONE-WH-002-004-TEMP-02",
+  "window_start": "2026-09-12T13:30:00Z",
+  "window_end": "2026-09-12T15:45:00Z",
+  "expected_decision": "RAISE_SENSOR_GAP_ALARM",
+  "expected_alarm_types": "SENSOR_GAP",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 9
+  }
+ },
+ {
+  "truth_id": "GT-000026",
+  "issue_type": "SENSOR_OUTAGE",
+  "entity_type": "SENSOR",
+  "entity_id": "OUT-SNS-ZONE-WH-002-003-HUM-01-20260912T183000Z",
+  "zone_id": "ZONE-WH-002-003",
+  "sensor_id": "SNS-ZONE-WH-002-003-HUM-01",
+  "window_start": "2026-09-12T18:30:00Z",
+  "window_end": "2026-09-12T19:00:00Z",
+  "expected_decision": "RECORD_GAP_NO_ALARM",
+  "expected_alarm_types": "",
+  "linked_entities": "",
+  "details": {
+   "cause": "CONNECTIVITY_FAULT",
+   "missed_readings": 2
+  }
+ },
+ {
+  "truth_id": "GT-000027",
+  "issue_type": "DOOR_LEFT_OPEN",
+  "entity_type": "DOOR_EVENT",
+  "entity_id": "DOOR-ZONE-WH-002-005-20260913T054015Z",
+  "zone_id": "ZONE-WH-002-005",
+  "sensor_id": "SNS-ZONE-WH-002-005-DOOR-01",
+  "window_start": "2026-09-13T05:40:15Z",
+  "window_end": "2026-09-13T07:13:12Z",
+  "expected_decision": "RAISE_ALARM",
+  "expected_alarm_types": "DOOR_OPEN_TOO_LONG",
+  "linked_entities": "",
+  "details": {
+   "cause": "DOOR_PROCEDURE",
+   "duration_s": 5577,
+   "limit_s": 240,
+   "secondary_alarm_types": [
+    "TEMP_HIGH",
+    "TEMP_LOW",
+    "HUMIDITY_HIGH"
+   ]
+  }
+ },
+ {
+  "truth_id": "GT-000028",
+  "issue_type": "TEMP_LOW_EXCURSION",
+  "entity_type": "ZONE_EVENT",
+  "entity_id": "EXC-ZONE-WH-001-003-20260913T103000Z",
+  "zone_id": "ZONE-WH-001-003",
+  "sensor_id": "",
+  "window_start": "2026-09-13T10:30:00Z",
+  "window_end": "2026-09-13T13:30:00Z",
+  "expected_decision": "RAISE_ALARM",
+  "expected_alarm_types": "TEMP_LOW",
+  "linked_entities": "",
+  "details": {
+   "cause": "EQUIPMENT_FAULT",
+   "margin_beyond_limit_c": 3.48,
+   "mode": "overshoot",
+   "steps": 12
+  }
+ }
+]

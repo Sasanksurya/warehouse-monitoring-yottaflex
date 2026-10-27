@@ -1,0 +1,1568 @@
+{
+ "summary": {
+  "checks": 173,
+  "passed": 172,
+  "failed": 0,
+  "rows_checked": 938952
+ },
+ "checks": [
+  {
+   "name": "alarm: closed_at set exactly when CLOSED (and equals the CLOSED event)",
+   "category": "arithmetic",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: duration_minutes == (breach_end - breach_start)/60",
+   "category": "arithmetic",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: status equals the latest history status",
+   "category": "arithmetic",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: impact_level follows the requirement rule",
+   "category": "arithmetic",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: overlap derived from breach window x stay",
+   "category": "arithmetic",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: duration_s == closed_at - opened_at",
+   "category": "arithmetic",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: exceeded_limit == duration_s > zone limit",
+   "category": "arithmetic",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inventory_lot: current_state equals latest history state",
+   "category": "arithmetic",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: dwell_minutes == (stored_to - stored_from)/60",
+   "category": "arithmetic",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: units_affected == lot.quantity_units",
+   "category": "arithmetic",
+   "checked": 34,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_gap: alarm_raised == missed >= min_gap_readings",
+   "category": "arithmetic",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_gap: missed_readings == (gap_end - gap_start)/interval",
+   "category": "arithmetic",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: declared gap intervals never exceed missing intervals",
+   "category": "arithmetic",
+   "checked": 40,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: breach_end > breach_start and opened_at >= breach_start",
+   "category": "dates",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: closed_at >= opened_at",
+   "category": "dates",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: timestamps non-decreasing",
+   "category": "dates",
+   "checked": 79,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: closed_at > opened_at",
+   "category": "dates",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: events of a zone do not overlap",
+   "category": "dates",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: scheduled <= started <= completed",
+   "category": "dates",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: scheduled_at >= alarm.opened_at",
+   "category": "dates",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: RECEIVED event equals received_at",
+   "category": "dates",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: timestamps non-decreasing",
+   "category": "dates",
+   "checked": 1061,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: stored_from >= lot.received_at",
+   "category": "dates",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: stored_to > stored_from",
+   "category": "dates",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: performed_at >= inspection.completed_at",
+   "category": "dates",
+   "checked": 45,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: not before sensor install date",
+   "category": "dates",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: strictly increasing per sensor (no duplicate timestamps)",
+   "category": "dates",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: timestamp on the 15-minute grid, inside the period",
+   "category": "dates",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_zone_assignment: effective_to >= effective_from",
+   "category": "dates",
+   "checked": 52,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: enum values allowed",
+   "category": "enums",
+   "checked": 68,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: enum values allowed",
+   "category": "enums",
+   "checked": 304,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: enum values allowed",
+   "category": "enums",
+   "checked": 299,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: enum values allowed",
+   "category": "enums",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: enum values allowed",
+   "category": "enums",
+   "checked": 36,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inventory_lot: enum values allowed",
+   "category": "enums",
+   "checked": 800,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: enum values allowed",
+   "category": "enums",
+   "checked": 2783,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: enum values allowed",
+   "category": "enums",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: enum values allowed",
+   "category": "enums",
+   "checked": 135,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: enum values allowed",
+   "category": "enums",
+   "checked": 150,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: enum values allowed",
+   "category": "enums",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_zone_assignment: enum values allowed",
+   "category": "enums",
+   "checked": 51,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "storage_requirement: enum values allowed",
+   "category": "enums",
+   "checked": 7,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "warehouse: enum values allowed",
+   "category": "enums",
+   "checked": 2,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "zone: enum values allowed",
+   "category": "enums",
+   "checked": 20,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: ID/pattern format",
+   "category": "ids",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: ID/pattern format",
+   "category": "ids",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: ID/pattern format",
+   "category": "ids",
+   "checked": 79,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: ID/pattern format",
+   "category": "ids",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: id embeds zone and opened timestamp",
+   "category": "ids",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: ID/pattern format",
+   "category": "ids",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inventory_lot: ID/pattern format",
+   "category": "ids",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: ID/pattern format",
+   "category": "ids",
+   "checked": 1061,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: ID/pattern format",
+   "category": "ids",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: ID/pattern format",
+   "category": "ids",
+   "checked": 45,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: ID/pattern format",
+   "category": "ids",
+   "checked": 50,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_gap: ID/pattern format",
+   "category": "ids",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: ID/pattern format",
+   "category": "ids",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_zone_assignment: ID/pattern format",
+   "category": "ids",
+   "checked": 52,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "storage_requirement: ID/pattern format",
+   "category": "ids",
+   "checked": 7,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "warehouse: ID/pattern format",
+   "category": "ids",
+   "checked": 2,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "zone: ID/pattern format",
+   "category": "ids",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "missing reading intervals not covered by a sensor_gap row (see evaluation: GAP_TREATED_AS_NORMAL)",
+   "category": "info",
+   "checked": 0,
+   "failed": 0,
+   "samples": [],
+   "severity": "INFO",
+   "value": 92,
+   "status": "INFO"
+  },
+  {
+   "name": "FK alarm.sensor_id -> sensor.sensor_id",
+   "category": "joins",
+   "checked": 14,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK alarm.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK alarm_lot_impact.alarm_id -> alarm.alarm_id",
+   "category": "joins",
+   "checked": 9,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK alarm_lot_impact.assignment_id -> lot_zone_assignment.assignment_id",
+   "category": "joins",
+   "checked": 114,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK alarm_lot_impact.lot_id -> inventory_lot.lot_id",
+   "category": "joins",
+   "checked": 114,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK alarm_lot_impact.remediation_id -> remediation.remediation_id",
+   "category": "joins",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK alarm_state_history.alarm_id -> alarm.alarm_id",
+   "category": "joins",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK door_event.sensor_id -> sensor.sensor_id",
+   "category": "joins",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK door_event.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK inspection.alarm_id -> alarm.alarm_id",
+   "category": "joins",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK inspection.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 6,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK inventory_lot.requirement_id -> storage_requirement.requirement_id",
+   "category": "joins",
+   "checked": 7,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK lot_state_history.lot_id -> inventory_lot.lot_id",
+   "category": "joins",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK lot_state_history.remediation_id -> remediation.remediation_id",
+   "category": "joins",
+   "checked": 34,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK lot_zone_assignment.lot_id -> inventory_lot.lot_id",
+   "category": "joins",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK lot_zone_assignment.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK remediation.alarm_id -> alarm.alarm_id",
+   "category": "joins",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK remediation.inspection_id -> inspection.inspection_id",
+   "category": "joins",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK remediation.lot_id -> inventory_lot.lot_id",
+   "category": "joins",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK remediation.sensor_id -> sensor.sensor_id",
+   "category": "joins",
+   "checked": 5,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK remediation.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 6,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK sensor.home_zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK sensor_gap.sensor_id -> sensor.sensor_id",
+   "category": "joins",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK sensor_gap.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 5,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK sensor_reading.sensor_id -> sensor.sensor_id",
+   "category": "joins",
+   "checked": 40,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK sensor_reading.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK sensor_zone_assignment.sensor_id -> sensor.sensor_id",
+   "category": "joins",
+   "checked": 50,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK sensor_zone_assignment.zone_id -> zone.zone_id",
+   "category": "joins",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "FK zone.warehouse_id -> warehouse.warehouse_id",
+   "category": "joins",
+   "checked": 2,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: triggering sensor homed in alarm zone",
+   "category": "joins",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: assignment belongs to the lot and the alarm's zone",
+   "category": "joins",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: sensor is a DOOR sensor homed in the zone",
+   "category": "joins",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: zone equals alarm zone",
+   "category": "joins",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inventory_lot: requirement category equals lot category",
+   "category": "joins",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: ALARM_HOLD references a QUARANTINE_LOT remediation",
+   "category": "joins",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: inspection belongs to the same alarm",
+   "category": "joins",
+   "checked": 45,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: lot action has a lot and links to inventory impact (alarm_lot_impact)",
+   "category": "joins",
+   "checked": 34,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: non-lot action has no lot; sensor action has a sensor",
+   "category": "joins",
+   "checked": 11,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: zone equals alarm zone",
+   "category": "joins",
+   "checked": 45,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "semantic checks ran (they need intact foreign keys)",
+   "category": "joins",
+   "checked": 1,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: sensor_id embeds home zone and type",
+   "category": "joins",
+   "checked": 50,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: unit matches type",
+   "category": "joins",
+   "checked": 50,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_gap: sensor homed in gap zone and not a DOOR sensor",
+   "category": "joins",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: reading_id == RDG-<sensor_id>-<timestamp>",
+   "category": "joins",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: unit equals sensor unit",
+   "category": "joins",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: zone has an active sensor assignment at measured_at",
+   "category": "joins",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "zone: zone_id embeds its warehouse_id",
+   "category": "joins",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: no duplicate (type, sensor, breach_start)",
+   "category": "keys",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: primary key unique",
+   "category": "keys",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: (alarm_id, lot_id) unique",
+   "category": "keys",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: primary key unique",
+   "category": "keys",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: primary key unique",
+   "category": "keys",
+   "checked": 79,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: (zone_id, opened_at) unique",
+   "category": "keys",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: primary key unique",
+   "category": "keys",
+   "checked": 1713,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: primary key unique",
+   "category": "keys",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inventory_lot: primary key unique",
+   "category": "keys",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: primary key unique",
+   "category": "keys",
+   "checked": 1061,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: primary key unique",
+   "category": "keys",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: primary key unique",
+   "category": "keys",
+   "checked": 45,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: primary key unique",
+   "category": "keys",
+   "checked": 50,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_gap: primary key unique",
+   "category": "keys",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: primary key unique",
+   "category": "keys",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_zone_assignment: primary key unique",
+   "category": "keys",
+   "checked": 52,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "storage_requirement: primary key unique",
+   "category": "keys",
+   "checked": 7,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "warehouse: primary key unique",
+   "category": "keys",
+   "checked": 2,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "zone: primary key unique",
+   "category": "keys",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: disposition consistent with linked remediation",
+   "category": "lifecycle",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: every MAJOR impact has a remediation or is a cut-off artefact",
+   "category": "lifecycle",
+   "checked": 152,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: every alarm has a history",
+   "category": "lifecycle",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: first event OPENED at opened_at",
+   "category": "lifecycle",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: transitions follow the allowed lifecycle",
+   "category": "lifecycle",
+   "checked": 79,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: status consistent with timestamps and outcome",
+   "category": "lifecycle",
+   "checked": 12,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot stay closed exactly when the lot is SHIPPED/DISPOSED",
+   "category": "lifecycle",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: every lot has a history",
+   "category": "lifecycle",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: reason consistent with state",
+   "category": "lifecycle",
+   "checked": 1061,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: transitions follow the allowed lifecycle",
+   "category": "lifecycle",
+   "checked": 1061,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: first stay is PUTAWAY, later stays TRANSFER",
+   "category": "lifecycle",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: ids follow opened_at order",
+   "category": "ordering",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inventory_lot: quantity_units > 0",
+   "category": "ranges",
+   "checked": 400,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: occupancy is a whole number",
+   "category": "ranges",
+   "checked": 13410,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: value in physical range",
+   "category": "ranges",
+   "checked": 53603,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "zone: temp_min < setpoint < temp_max",
+   "category": "ranges",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: required fields present",
+   "category": "required",
+   "checked": 135,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: required fields present",
+   "category": "required",
+   "checked": 72,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: required fields present",
+   "category": "required",
+   "checked": 1427,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: required fields present",
+   "category": "required",
+   "checked": 316,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: required fields present",
+   "category": "required",
+   "checked": 62,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: reading_interval_s only for non-DOOR",
+   "category": "required",
+   "checked": 50,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: required fields present",
+   "category": "required",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_zone_assignment: required fields present",
+   "category": "required",
+   "checked": 53,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "storage_requirement: required fields present",
+   "category": "required",
+   "checked": 8,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "zone: required fields present",
+   "category": "required",
+   "checked": 10,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "CSV header equals schema field order",
+   "category": "schema",
+   "checked": 16,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: peak is beyond the threshold (TEMP_HIGH/HUMIDITY/DOOR/OCC above, TEMP_LOW below)",
+   "category": "thresholds",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: threshold_value equals the zone limit for its type",
+   "category": "thresholds",
+   "checked": 17,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm: field types parse",
+   "category": "types",
+   "checked": 238,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_lot_impact: field types parse",
+   "category": "types",
+   "checked": 1385,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "alarm_state_history: field types parse",
+   "category": "types",
+   "checked": 560,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "door_event: field types parse",
+   "category": "types",
+   "checked": 13704,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inspection: field types parse",
+   "category": "types",
+   "checked": 108,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "inventory_lot: field types parse",
+   "category": "types",
+   "checked": 2800,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_state_history: field types parse",
+   "category": "types",
+   "checked": 6000,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "lot_zone_assignment: field types parse",
+   "category": "types",
+   "checked": 2484,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "remediation: field types parse",
+   "category": "types",
+   "checked": 433,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor: field types parse",
+   "category": "types",
+   "checked": 390,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_gap: field types parse",
+   "category": "types",
+   "checked": 56,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_reading: field types parse",
+   "category": "types",
+   "checked": 321618,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "sensor_zone_assignment: field types parse",
+   "category": "types",
+   "checked": 259,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "storage_requirement: field types parse",
+   "category": "types",
+   "checked": 55,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "warehouse: field types parse",
+   "category": "types",
+   "checked": 16,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  },
+  {
+   "name": "zone: field types parse",
+   "category": "types",
+   "checked": 130,
+   "failed": 0,
+   "samples": [],
+   "severity": "ERROR",
+   "status": "PASS"
+  }
+ ]
+}

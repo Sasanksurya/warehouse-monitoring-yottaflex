@@ -1,0 +1,136 @@
+{
+ "rules": {
+  "reading_interval_s": 900,
+  "min_breach_readings": 2,
+  "clear_readings": 2,
+  "band_inclusive": true,
+  "critical_temp_margin_c": 3.0,
+  "critical_humidity_margin_pct": 10.0,
+  "critical_duration_min": 120,
+  "door_critical_multiple": 3.0,
+  "min_gap_readings": 3,
+  "gap_critical_readings": 12,
+  "drift_threshold_c": 1.0,
+  "drift_min_days": 2,
+  "occupancy_rule": "reading > zone.max_occupancy raises OCCUPANCY_LIMIT on first reading",
+  "lot_link_alarm_types": [
+   "TEMP_HIGH",
+   "TEMP_LOW",
+   "HUMIDITY_HIGH",
+   "SENSOR_GAP",
+   "SENSOR_DRIFT"
+  ]
+ },
+ "zone_types": {
+  "FROZEN": {
+   "temp_band_c": [
+    -25,
+    -15
+   ],
+   "humidity_max_pct": 85,
+   "max_occupancy": 4,
+   "door_open_limit_s": 240
+  },
+  "COLD": {
+   "temp_band_c": [
+    2,
+    8
+   ],
+   "humidity_max_pct": 70,
+   "max_occupancy": 8,
+   "door_open_limit_s": 300
+  },
+  "COOL": {
+   "temp_band_c": [
+    8,
+    15
+   ],
+   "humidity_max_pct": 85,
+   "max_occupancy": 8,
+   "door_open_limit_s": 420
+  },
+  "AMBIENT": {
+   "temp_band_c": [
+    15,
+    25
+   ],
+   "humidity_max_pct": 60,
+   "max_occupancy": 25,
+   "door_open_limit_s": 600
+  },
+  "HOT": {
+   "temp_band_c": [
+    30,
+    40
+   ],
+   "humidity_max_pct": 45,
+   "max_occupancy": 6,
+   "door_open_limit_s": 480
+  }
+ },
+ "storage_requirements": [
+  {
+   "category": "FROZEN_FOOD",
+   "temp_band_c": [
+    -25,
+    -15
+   ],
+   "humidity_max_pct": null,
+   "max_excursion_min": 180
+  },
+  {
+   "category": "DAIRY",
+   "temp_band_c": [
+    2,
+    8
+   ],
+   "humidity_max_pct": 80,
+   "max_excursion_min": 120
+  },
+  {
+   "category": "PHARMA_COLD",
+   "temp_band_c": [
+    2,
+    8
+   ],
+   "humidity_max_pct": 70,
+   "max_excursion_min": 60
+  },
+  {
+   "category": "PRODUCE",
+   "temp_band_c": [
+    8,
+    15
+   ],
+   "humidity_max_pct": 90,
+   "max_excursion_min": 240
+  },
+  {
+   "category": "ELECTRONICS",
+   "temp_band_c": [
+    15,
+    25
+   ],
+   "humidity_max_pct": 60,
+   "max_excursion_min": 480
+  },
+  {
+   "category": "DRY_GOODS",
+   "temp_band_c": [
+    10,
+    30
+   ],
+   "humidity_max_pct": 70,
+   "max_excursion_min": 720
+  },
+  {
+   "category": "CURING_MATERIALS",
+   "temp_band_c": [
+    30,
+    40
+   ],
+   "humidity_max_pct": 50,
+   "max_excursion_min": 240
+  }
+ ]
+}

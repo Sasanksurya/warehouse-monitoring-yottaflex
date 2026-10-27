@@ -1,0 +1,17 @@
+{
+ "temp_fail": 0.022,
+ "temp_overshoot": 0.006,
+ "humidity": 0.01,
+ "door_left_open": 0.018,
+ "occupancy": 0.01,
+ "transient_spike": 0.015,
+ "boundary_min_persistence": 0.01,
+ "drift_zone_fraction": 0.1,
+ "outage_per_sensor_27d": 0.35,
+ "hidden_gap_zone_fraction": 0.08,
+ "incompatible_lot_fraction": 0.01,
+ "multi_zone_no_rationale_fraction": 0.02,
+ "multi_zone_with_rationale_fraction": 0.01,
+ "alarm_unlinked_prob": 0.08,
+ "transfer_fraction": 0.08
+}

@@ -1,0 +1,136 @@
+{
+ "generator_command": "python -m whmon generate --scale full --out /tmp/claude-0/-home-claude/f44a2749-0b90-588f-8eab-9eb1fecae359/scratchpad/full_final",
+ "seed": 20261022,
+ "scale": {
+  "name": "full",
+  "warehouses": 10,
+  "zones_per_warehouse": 10,
+  "days": 27,
+  "lots": 10000,
+  "zones": 100,
+  "sensors": 500
+ },
+ "period_utc": [
+  "2026-09-01T00:00:00Z",
+  "2026-09-28T00:00:00Z"
+ ],
+ "reading_interval_s": 900,
+ "row_counts": {
+  "warehouse": 10,
+  "zone": 100,
+  "sensor": 500,
+  "sensor_zone_assignment": 515,
+  "storage_requirement": 7,
+  "inventory_lot": 10000,
+  "lot_zone_assignment": 10326,
+  "sensor_reading": 1034768,
+  "door_event": 39384,
+  "sensor_gap": 146,
+  "alarm": 485,
+  "alarm_state_history": 2124,
+  "inspection": 286,
+  "remediation": 1434,
+  "alarm_lot_impact": 7665,
+  "lot_state_history": 27809
+ },
+ "ground_truth_rows": 525,
+ "python": "3.13.17",
+ "files": {
+  "csv/alarm.csv": {
+   "bytes": 92549,
+   "sha256": "e8361e59bcf7580b1f5f4fb9bc773eb2e8a51122c2af7061093fbc802f23d46d"
+  },
+  "csv/alarm_lot_impact.csv": {
+   "bytes": 923711,
+   "sha256": "9347dc982ddb3c554a2c05867a0ee8cf930797d4d89e758636bdf29a7b1ae1cc"
+  },
+  "csv/alarm_state_history.csv": {
+   "bytes": 207297,
+   "sha256": "2789769b2f17ea1df70c8afe188a840e063d254259131483b7265112d7d059c3"
+  },
+  "csv/door_event.csv": {
+   "bytes": 5585924,
+   "sha256": "ae829816923f8d0f3484d08e99ac4a9bf1db9ae99eec371146bf026e5116070a"
+  },
+  "csv/inspection.csv": {
+   "bytes": 44329,
+   "sha256": "f778859c95c11f6ab1d0b71a766a7fc24c93ab9828f22a515a238966830967e9"
+  },
+  "csv/inventory_lot.csv": {
+   "bytes": 892773,
+   "sha256": "92479adfb56613654de4fbc3371527667018f6b53f0d217f53cf60a0394247d2"
+  },
+  "csv/lot_state_history.csv": {
+   "bytes": 1995673,
+   "sha256": "fac882b91b066c3e9ddfa0a1c748b18b0316e7e029701ee20886e98064ced537"
+  },
+  "csv/lot_zone_assignment.csv": {
+   "bytes": 945583,
+   "sha256": "e9cca3eadc2f9627dfad7decefd4ccbc0d6a06ce3e0278feaba6d0253c490cf4"
+  },
+  "csv/remediation.csv": {
+   "bytes": 209427,
+   "sha256": "bcb58845f2708ae4b1d2c1026369638aee4130defcce686c968f2ab6d1e2682b"
+  },
+  "csv/sensor.csv": {
+   "bytes": 40485,
+   "sha256": "b9aa4d405be53cd307206041c0d12c8b7fdcc42d2c4a7a34bbcf54b6ceec1d7f"
+  },
+  "csv/sensor_gap.csv": {
+   "bytes": 20753,
+   "sha256": "4dc7a0542e305d9605e422b4723c97d4b4752ed57530ed89438c44ad4c276c8a"
+  },
+  "csv/sensor_reading.csv": {
+   "bytes": 126661433,
+   "sha256": "91a4240fa96d0f8e72c92731beb078f7bee26c8a3af95ac89c4576b614af48dd"
+  },
+  "csv/sensor_zone_assignment.csv": {
+   "bytes": 43495,
+   "sha256": "1ff2f7e266c595eb013af92124d980a2dfcacde3c8eeadde781720f2e56164c7"
+  },
+  "csv/storage_requirement.csv": {
+   "bytes": 511,
+   "sha256": "7fe6b5b527b27f4fe66f835210c7a3e0616315a49aa5d1d6c2802a3df64df317"
+  },
+  "csv/warehouse.csv": {
+   "bytes": 832,
+   "sha256": "411f2067f50b33f0d98270bf394822fe6c26a4f0079e2d9698ddcd5561e52079"
+  },
+  "csv/zone.csv": {
+   "bytes": 8706,
+   "sha256": "9c9a7ab4f047d0b16c28b536e7fdd69b5a4fac646e70c0bee0250fbf8e1015c8"
+  },
+  "docs/data_dictionary.csv": {
+   "bytes": 11450,
+   "sha256": "6013ddf9f3c7231ce386c3992cd7d5702f9c311e71719a8e3186a6e0591a972b"
+  },
+  "docs/data_dictionary.md": {
+   "bytes": 16134,
+   "sha256": "bf2bf2fc6d3dae38d8be1bcc3c7ee4790238a68a4b21962a99fbd9b8292ac60f"
+  },
+  "docs/injection_rates.json": {
+   "bytes": 454,
+   "sha256": "a8abb088ec5d4c19ca4c6f10f5c505c01c5d694e97fd6bc7fd11d38343ada888"
+  },
+  "docs/monitoring_rules.json": {
+   "bytes": 2249,
+   "sha256": "ca9a16fadfc8549bc9d34cb036cb4edb07e9f50256ba0d9a08a7978ab3dcd76f"
+  },
+  "docs/schema.sql": {
+   "bytes": 9758,
+   "sha256": "6e9f562e32f4b9d593e283b078ab904f8677aa8b17ee0aa3b85bf73fe2d960f3"
+  },
+  "docs/source_manifest.json": {
+   "bytes": 341,
+   "sha256": "ce054d527ed1fc4d8804d4dea21ff0845fd7d3c85817560ad40a91d04e9f7b81"
+  },
+  "ground_truth/ground_truth.csv": {
+   "bytes": 148287,
+   "sha256": "8181edde506d664d650e2f0fc0789cfcefe92e1f41675715eb9542d6eb9b139b"
+  },
+  "ground_truth/ground_truth.json": {
+   "bytes": 285402,
+   "sha256": "5bdf78f1208b28cdea3786cd01c618cd5bf393e9b290f9e23e7d2af438fe123e"
+  }
+ }
+}

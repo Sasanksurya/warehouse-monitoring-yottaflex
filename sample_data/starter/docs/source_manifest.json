@@ -1,0 +1,5 @@
+{
+ "external_data_used": false,
+ "note": "All data is synthetic, generated from documented rules and a fixed seed. No third-party dataset, scraped content or personal information is used; public reference ranges (e.g. cold-chain 2-8 C, frozen -25..-15 C) informed the zone and requirement bands as schema inspiration only.",
+ "sources": []
+}

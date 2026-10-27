@@ -1,0 +1,136 @@
+{
+ "generator_command": "python -m whmon generate --scale starter --out sample_data/starter",
+ "seed": 20261022,
+ "scale": {
+  "name": "starter",
+  "warehouses": 2,
+  "zones_per_warehouse": 5,
+  "days": 14,
+  "lots": 400,
+  "zones": 10,
+  "sensors": 50
+ },
+ "period_utc": [
+  "2026-09-01T00:00:00Z",
+  "2026-09-15T00:00:00Z"
+ ],
+ "reading_interval_s": 900,
+ "row_counts": {
+  "warehouse": 2,
+  "zone": 10,
+  "sensor": 50,
+  "sensor_zone_assignment": 52,
+  "storage_requirement": 7,
+  "inventory_lot": 400,
+  "lot_zone_assignment": 400,
+  "sensor_reading": 53603,
+  "door_event": 1713,
+  "sensor_gap": 8,
+  "alarm": 17,
+  "alarm_state_history": 79,
+  "inspection": 12,
+  "remediation": 45,
+  "alarm_lot_impact": 152,
+  "lot_state_history": 1061
+ },
+ "ground_truth_rows": 28,
+ "python": "3.13.17",
+ "files": {
+  "csv/alarm.csv": {
+   "bytes": 3390,
+   "sha256": "04007e72bab8177d2d2be48d2e6a0fcc498d65d4aa9b937a7426d422dcfb438b"
+  },
+  "csv/alarm_lot_impact.csv": {
+   "bytes": 18555,
+   "sha256": "46fd498210269d28cf84016441657a2a2f50bbe536bcf9016798fdb3358d892c"
+  },
+  "csv/alarm_state_history.csv": {
+   "bytes": 7925,
+   "sha256": "33aa5fb2fe1b4befbd5c3859740260c5814b9c1f4925055f21daeeed575ad63a"
+  },
+  "csv/door_event.csv": {
+   "bytes": 242993,
+   "sha256": "3f99c6c4d9589dcdaf52c90daa22fadd67962259c8e23669bc902ee31a646227"
+  },
+  "csv/inspection.csv": {
+   "bytes": 1950,
+   "sha256": "a960512e0c1d36f2c06029b0dbbb89eb86ef9c1261c968b44a725055bdb957f6"
+  },
+  "csv/inventory_lot.csv": {
+   "bytes": 35753,
+   "sha256": "e1b63c4fc4d4f8f2711585aa8109ea3a8f90897652837c18c87a4c217a94e934"
+  },
+  "csv/lot_state_history.csv": {
+   "bytes": 75850,
+   "sha256": "e61870c3e1eb8d76af8eeaaf46c2146b1b351b22d0a9f6330d9b330c302efb4b"
+  },
+  "csv/lot_zone_assignment.csv": {
+   "bytes": 35631,
+   "sha256": "ad9ad948c06988ca37288646d7d37f70bc4a34513f67cab9a4d5a0b33f4cbc8c"
+  },
+  "csv/remediation.csv": {
+   "bytes": 6725,
+   "sha256": "f0113ef73151168f9cfa6252942b92984278daa9024ecb5a97e801d149a7993c"
+  },
+  "csv/sensor.csv": {
+   "bytes": 4125,
+   "sha256": "e586b11163d5056f3c7dca80fde77fe6e6f14d84663122d2b81c4db6ef0ce968"
+  },
+  "csv/sensor_gap.csv": {
+   "bytes": 1205,
+   "sha256": "adec0dbcaf3d9ed07e9e5f8596803f137c00e131a2104fe27146fbcec4490041"
+  },
+  "csv/sensor_reading.csv": {
+   "bytes": 6563788,
+   "sha256": "03748a0785dd23b86b61935a58b547a7313dce0162475a777f1b1e565fcbf6af"
+  },
+  "csv/sensor_zone_assignment.csv": {
+   "bytes": 4458,
+   "sha256": "c0254e59cf233256c123800dfdce93ba5dc5fb10fc2f8c1790be1b476331d9f9"
+  },
+  "csv/storage_requirement.csv": {
+   "bytes": 511,
+   "sha256": "7fe6b5b527b27f4fe66f835210c7a3e0616315a49aa5d1d6c2802a3df64df317"
+  },
+  "csv/warehouse.csv": {
+   "bytes": 246,
+   "sha256": "86e4a7b84b8182b75581249cc9959e80af7f0e632679f7e7e07d639156683883"
+  },
+  "csv/zone.csv": {
+   "bytes": 1018,
+   "sha256": "d9064752367f6827e4c74c4a6cb89f2d245a9ee687256051d55bebcf7e6fa265"
+  },
+  "docs/data_dictionary.csv": {
+   "bytes": 11450,
+   "sha256": "6013ddf9f3c7231ce386c3992cd7d5702f9c311e71719a8e3186a6e0591a972b"
+  },
+  "docs/data_dictionary.md": {
+   "bytes": 16134,
+   "sha256": "bf2bf2fc6d3dae38d8be1bcc3c7ee4790238a68a4b21962a99fbd9b8292ac60f"
+  },
+  "docs/injection_rates.json": {
+   "bytes": 454,
+   "sha256": "a8abb088ec5d4c19ca4c6f10f5c505c01c5d694e97fd6bc7fd11d38343ada888"
+  },
+  "docs/monitoring_rules.json": {
+   "bytes": 2249,
+   "sha256": "ca9a16fadfc8549bc9d34cb036cb4edb07e9f50256ba0d9a08a7978ab3dcd76f"
+  },
+  "docs/schema.sql": {
+   "bytes": 9758,
+   "sha256": "6e9f562e32f4b9d593e283b078ab904f8677aa8b17ee0aa3b85bf73fe2d960f3"
+  },
+  "docs/source_manifest.json": {
+   "bytes": 341,
+   "sha256": "ce054d527ed1fc4d8804d4dea21ff0845fd7d3c85817560ad40a91d04e9f7b81"
+  },
+  "ground_truth/ground_truth.csv": {
+   "bytes": 7780,
+   "sha256": "a8dd8c6aa6be1312daa014dc34db74cb9b9e5fd3749d089d320d21839e4a99e9"
+  },
+  "ground_truth/ground_truth.json": {
+   "bytes": 14899,
+   "sha256": "a7e35b138cf34e1b241966272b4a37f3b90e8f124479fd7de4b768abf40387fa"
+  }
+ }
+}

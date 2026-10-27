@@ -1,0 +1,140 @@
+table,field,type,required,allowed_values,unit,unique,key,validation_rule
+warehouse,warehouse_id,STRING,yes,regex ^WH-\d{3}$,,yes,PK,"Immutable, zero-padded counter"
+warehouse,name,STRING,yes,,,no,,
+warehouse,city,STRING,yes,,,no,,
+warehouse,country,STRING,yes,,,no,,
+warehouse,utc_offset_minutes,INTEGER,yes,,minutes,no,,Local offset used for shift patterns; timestamps stay UTC
+warehouse,floor_area_sqm,INTEGER,yes,,m2,no,,> 0
+warehouse,status,STRING,yes,ACTIVE|INACTIVE,,no,,
+warehouse,commissioned_date,DATE,yes,,,no,,
+zone,zone_id,STRING,yes,regex ^ZONE-WH-\d{3}-\d{3}$,,yes,PK,ZONE-<warehouse-id>-NNN
+zone,warehouse_id,STRING,yes,,,no,FK -> warehouse.warehouse_id,Must match the warehouse embedded in zone_id
+zone,zone_name,STRING,yes,,,no,,
+zone,zone_type,STRING,yes,FROZEN|COLD|COOL|AMBIENT|HOT,,no,,
+zone,temp_min_c,FLOAT,yes,,C,no,,< temp_max_c; lower alert threshold
+zone,temp_max_c,FLOAT,yes,,C,no,,upper alert threshold
+zone,setpoint_c,FLOAT,yes,,C,no,,"Within [temp_min_c, temp_max_c]"
+zone,humidity_max_pct,FLOAT,yes,,%RH,no,,0-100; alert threshold
+zone,max_occupancy,INTEGER,yes,,persons,no,,>= 1; alert threshold
+zone,door_open_limit_s,INTEGER,yes,,seconds,no,,> 0; alert threshold
+zone,capacity_lots,INTEGER,yes,,lots,no,,"> 0, informational"
+zone,status,STRING,yes,ACTIVE|INACTIVE,,no,,
+zone,effective_from,DATE,yes,,,no,,
+zone,effective_to,DATE,no,,,no,,>= effective_from when present
+sensor,sensor_id,STRING,yes,regex ^SNS-ZONE-WH-\d{3}-\d{3}-(TEMP|HUM|OCC|DOOR)-\d{2}$,,yes,PK,SNS-<zone-id>-<TYPE>-NN; embeds home zone and type
+sensor,home_zone_id,STRING,yes,,,no,FK -> zone.zone_id,Equals the zone embedded in sensor_id
+sensor,sensor_type,STRING,yes,TEMP|HUM|OCC|DOOR,,no,,
+sensor,unit,STRING,yes,C|PCT_RH|PERSONS|EVENT,,no,,"TEMP->C, HUM->PCT_RH, OCC->PERSONS, DOOR->EVENT"
+sensor,model,STRING,yes,,,no,,
+sensor,install_date,DATE,yes,,,no,,
+sensor,status,STRING,yes,ACTIVE|FAULTY|DECOMMISSIONED,,no,,
+sensor,reading_interval_s,INTEGER,no,,seconds,no,,"Required for TEMP/HUM/OCC, empty for DOOR"
+sensor_zone_assignment,assignment_id,STRING,yes,regex ^SZA-\d{6}$,,yes,PK,
+sensor_zone_assignment,sensor_id,STRING,yes,,,no,FK -> sensor.sensor_id,
+sensor_zone_assignment,zone_id,STRING,yes,,,no,FK -> zone.zone_id,
+sensor_zone_assignment,effective_from,DATE,yes,,,no,,
+sensor_zone_assignment,effective_to,DATE,no,,,no,,>= effective_from; empty = still active
+sensor_zone_assignment,rationale,STRING,no,PRIMARY_PLACEMENT|SHARED_AIRSPACE_COVERAGE,,no,,Mandatory for every assignment except it may be empty only by defect (edge case SENSOR_MULTI_ZONE_NO_RATIONALE)
+storage_requirement,requirement_id,STRING,yes,regex ^REQ-[A-Z_]+-\d{2}$,,yes,PK,
+storage_requirement,product_category,STRING,yes,FROZEN_FOOD|DAIRY|PHARMA_COLD|PRODUCE|ELECTRONICS|DRY_GOODS|CURING_MATERIALS,,no,,
+storage_requirement,temp_min_c,FLOAT,yes,,C,no,,
+storage_requirement,temp_max_c,FLOAT,yes,,C,no,,> temp_min_c
+storage_requirement,humidity_max_pct,FLOAT,no,,%RH,no,,Empty = humidity not controlled
+storage_requirement,max_excursion_min,INTEGER,yes,,minutes,no,,Tolerated exposure before impact is MAJOR
+storage_requirement,version,INTEGER,yes,,,no,,>= 1
+storage_requirement,effective_from,DATE,yes,,,no,,
+storage_requirement,effective_to,DATE,no,,,no,,
+inventory_lot,lot_id,STRING,yes,regex ^LOT-2026-\d{6}$,,yes,PK,
+inventory_lot,product_code,STRING,yes,,,no,,
+inventory_lot,product_category,STRING,yes,FROZEN_FOOD|DAIRY|PHARMA_COLD|PRODUCE|ELECTRONICS|DRY_GOODS|CURING_MATERIALS,,no,,
+inventory_lot,requirement_id,STRING,yes,,,no,FK -> storage_requirement.requirement_id,Category must equal the requirement's category
+inventory_lot,quantity_units,INTEGER,yes,,units,no,,> 0
+inventory_lot,received_at,TIMESTAMP,yes,,,no,,
+inventory_lot,current_state,STRING,yes,RECEIVED|STORED|QUARANTINED|DISPOSED|SHIPPED,,no,,DERIVED: to_state of the latest lot_state_history row
+lot_zone_assignment,assignment_id,STRING,yes,regex ^LZA-\d{6}$,,yes,PK,
+lot_zone_assignment,lot_id,STRING,yes,,,no,FK -> inventory_lot.lot_id,
+lot_zone_assignment,zone_id,STRING,yes,,,no,FK -> zone.zone_id,
+lot_zone_assignment,stored_from,TIMESTAMP,yes,,,no,,>= lot.received_at
+lot_zone_assignment,stored_to,TIMESTAMP,no,,,no,,> stored_from; empty = still stored at data cutoff
+lot_zone_assignment,dwell_minutes,INTEGER,no,,minutes,no,,DERIVED: (stored_to - stored_from)/60; empty if open
+lot_zone_assignment,assignment_reason,STRING,yes,PUTAWAY|TRANSFER,,no,,
+sensor_reading,reading_id,STRING,yes,regex ^RDG-SNS-ZONE-WH-\d{3}-\d{3}-(TEMP|HUM|OCC)-\d{2}-\d{8}T\d{6}Z$,,yes,PK,RDG-<sensor-id>-<timestamp>; must equal sensor_id + measured_at
+sensor_reading,sensor_id,STRING,yes,,,no,FK -> sensor.sensor_id,
+sensor_reading,zone_id,STRING,yes,,,no,FK -> zone.zone_id,A zone with an active assignment for the sensor at measured_at
+sensor_reading,measured_at,TIMESTAMP,yes,,,no,,"UTC, aligned to the 15-minute grid; unique per sensor"
+sensor_reading,value,FLOAT,yes,,per sensor unit,no,,"TEMP -60..80, HUM 0..100, OCC >= 0 integer"
+sensor_reading,unit,STRING,yes,C|PCT_RH|PERSONS,,no,,Equals sensor.unit
+door_event,door_event_id,STRING,yes,regex ^DOOR-ZONE-WH-\d{3}-\d{3}-\d{8}T\d{6}Z$,,yes,PK,DOOR-<zone-id>-<opened-timestamp>
+door_event,zone_id,STRING,yes,,,no,FK -> zone.zone_id,
+door_event,sensor_id,STRING,yes,,,no,FK -> sensor.sensor_id,A DOOR sensor homed in zone_id
+door_event,opened_at,TIMESTAMP,yes,,,no,,
+door_event,closed_at,TIMESTAMP,yes,,,no,,> opened_at
+door_event,duration_s,INTEGER,yes,,seconds,no,,DERIVED: closed_at - opened_at
+door_event,open_reason,STRING,yes,LOADING|PICKING|INSPECTION|CLEANING|UNKNOWN,,no,,
+door_event,exceeded_limit,BOOLEAN,yes,,,no,,DERIVED: duration_s > zone.door_open_limit_s
+sensor_gap,gap_id,STRING,yes,regex ^GAP-SNS-ZONE-WH-\d{3}-\d{3}-(TEMP|HUM|OCC)-\d{2}-\d{8}T\d{6}Z$,,yes,PK,
+sensor_gap,sensor_id,STRING,yes,,,no,FK -> sensor.sensor_id,
+sensor_gap,zone_id,STRING,yes,,,no,FK -> zone.zone_id,
+sensor_gap,gap_start,TIMESTAMP,yes,,,no,,First missing grid timestamp
+sensor_gap,gap_end,TIMESTAMP,yes,,,no,,Timestamp of the next received reading (exclusive)
+sensor_gap,missed_readings,INTEGER,yes,,,no,,DERIVED: (gap_end - gap_start)/interval
+sensor_gap,alarm_raised,BOOLEAN,yes,,,no,,DERIVED: missed_readings >= rules.min_gap_readings
+alarm,alarm_id,STRING,yes,regex ^ALM-2026-\d{6}$,,yes,PK,Numbered in opened_at order
+alarm,zone_id,STRING,yes,,,no,FK -> zone.zone_id,
+alarm,sensor_id,STRING,yes,,,no,FK -> sensor.sensor_id,Triggering sensor; homed in zone_id
+alarm,alarm_type,STRING,yes,TEMP_HIGH|TEMP_LOW|HUMIDITY_HIGH|DOOR_OPEN_TOO_LONG|OCCUPANCY_LIMIT|SENSOR_GAP|SENSOR_DRIFT,,no,,
+alarm,severity,STRING,yes,WARNING|CRITICAL,,no,,
+alarm,breach_start,TIMESTAMP,yes,,,no,,
+alarm,breach_end,TIMESTAMP,yes,,,no,,> breach_start (exclusive end of the breach window)
+alarm,opened_at,TIMESTAMP,yes,,,no,,>= breach_start
+alarm,closed_at,TIMESTAMP,no,,,no,,>= opened_at; empty unless status = CLOSED
+alarm,status,STRING,yes,OPEN|ACKNOWLEDGED|ESCALATED|UNDER_INSPECTION|REMEDIATED|CLOSED,,no,,DERIVED: to_status of latest alarm_state_history row
+alarm,peak_value,FLOAT,yes,,threshold_unit,no,,Worst observed value (drift: max |daily mean diff|; gap: missed readings)
+alarm,threshold_value,FLOAT,yes,,threshold_unit,no,,Must equal the zone limit (or rule parameter) for alarm_type
+alarm,threshold_unit,STRING,yes,C|PCT_RH|SECONDS|PERSONS|READINGS,,no,,
+alarm,duration_minutes,INTEGER,yes,,minutes,no,,DERIVED: (breach_end - breach_start)/60
+alarm_state_history,event_id,STRING,yes,regex ^AEV-\d{6}$,,yes,PK,
+alarm_state_history,alarm_id,STRING,yes,,,no,FK -> alarm.alarm_id,
+alarm_state_history,event_type,STRING,yes,OPENED|ACKNOWLEDGED|ESCALATED|INSPECTION_STARTED|REMEDIATION_COMPLETED|CLOSED,,no,,
+alarm_state_history,from_status,STRING,no,OPEN|ACKNOWLEDGED|ESCALATED|UNDER_INSPECTION|REMEDIATED|CLOSED,,no,,Empty only for the first event
+alarm_state_history,to_status,STRING,yes,OPEN|ACKNOWLEDGED|ESCALATED|UNDER_INSPECTION|REMEDIATED|CLOSED,,no,,
+alarm_state_history,event_ts,TIMESTAMP,yes,,,no,,Non-decreasing per alarm
+alarm_state_history,actor_role,STRING,yes,PLANT_OPERATOR|MAINTENANCE_ENGINEER|QUALITY_ENGINEER|PRODUCTION_PLANNER|OT_IT_ADMIN|SYSTEM,,no,,
+alarm_state_history,reference_id,STRING,no,,,no,,Inspection/remediation id when relevant
+inspection,inspection_id,STRING,yes,regex ^INS-2026-\d{6}$,,yes,PK,
+inspection,alarm_id,STRING,yes,,,no,FK -> alarm.alarm_id,
+inspection,zone_id,STRING,yes,,,no,FK -> zone.zone_id,
+inspection,inspector_role,STRING,yes,MAINTENANCE_ENGINEER|QUALITY_ENGINEER|OT_IT_ADMIN,,no,,
+inspection,scheduled_at,TIMESTAMP,yes,,,no,,>= alarm.opened_at
+inspection,started_at,TIMESTAMP,no,,,no,,>= scheduled_at
+inspection,completed_at,TIMESTAMP,no,,,no,,>= started_at
+inspection,status,STRING,yes,SCHEDULED|IN_PROGRESS|COMPLETED,,no,,COMPLETED requires completed_at and outcome
+inspection,outcome,STRING,no,EQUIPMENT_FAULT|DOOR_PROCEDURE|SENSOR_FAULT|CONNECTIVITY_FAULT|NO_FAULT_FOUND,,no,,
+remediation,remediation_id,STRING,yes,regex ^REM-2026-\d{6}$,,yes,PK,
+remediation,alarm_id,STRING,yes,,,no,FK -> alarm.alarm_id,
+remediation,inspection_id,STRING,no,,,no,FK -> inspection.inspection_id,
+remediation,zone_id,STRING,yes,,,no,FK -> zone.zone_id,
+remediation,sensor_id,STRING,no,,,no,FK -> sensor.sensor_id,Required for sensor actions
+remediation,lot_id,STRING,no,,,no,FK -> inventory_lot.lot_id,Required for lot actions; must have an alarm_lot_impact row for the alarm
+remediation,action_type,STRING,yes,REPAIR_EQUIPMENT|DOOR_SEAL_REPAIR|RECALIBRATE_SENSOR|RESTORE_CONNECTIVITY|QUARANTINE_LOT|DISPOSE_LOT|RELEASE_LOT|NOTIFY_CUSTOMER,,no,,
+remediation,owner_role,STRING,yes,PLANT_OPERATOR|MAINTENANCE_ENGINEER|QUALITY_ENGINEER|PRODUCTION_PLANNER|OT_IT_ADMIN|SYSTEM,,no,,
+remediation,performed_at,TIMESTAMP,yes,,,no,,>= inspection.completed_at
+remediation,status,STRING,yes,PLANNED|COMPLETED,,no,,
+remediation,units_affected,INTEGER,no,,units,no,,DERIVED: lot.quantity_units for lot actions
+alarm_lot_impact,impact_id,STRING,yes,regex ^IMP-\d{6}$,,yes,PK,
+alarm_lot_impact,alarm_id,STRING,yes,,,no,FK -> alarm.alarm_id,
+alarm_lot_impact,lot_id,STRING,yes,,,no,FK -> inventory_lot.lot_id,
+alarm_lot_impact,assignment_id,STRING,yes,,,no,FK -> lot_zone_assignment.assignment_id,Assignment in the alarm's zone overlapping the breach window
+alarm_lot_impact,overlap_start,TIMESTAMP,yes,,,no,,
+alarm_lot_impact,overlap_end,TIMESTAMP,yes,,,no,,> overlap_start
+alarm_lot_impact,overlap_minutes,INTEGER,yes,,minutes,no,,DERIVED: intersection of breach window and assignment
+alarm_lot_impact,impact_level,STRING,yes,NONE|MINOR|MAJOR|UNVERIFIED,,no,,NONE: peak inside lot requirement; MINOR/MAJOR: outside requirement for < / >= max_excursion_min; UNVERIFIED: sensor gap/drift
+alarm_lot_impact,disposition,STRING,yes,NO_ACTION|HOLD_PLACED|ALREADY_HELD|SHIPPED_BEFORE_ACTION,,no,,
+alarm_lot_impact,remediation_id,STRING,no,,,no,FK -> remediation.remediation_id,
+lot_state_history,event_id,STRING,yes,regex ^LSE-\d{6}$,,yes,PK,
+lot_state_history,lot_id,STRING,yes,,,no,FK -> inventory_lot.lot_id,
+lot_state_history,from_state,STRING,no,RECEIVED|STORED|QUARANTINED|DISPOSED|SHIPPED,,no,,
+lot_state_history,to_state,STRING,yes,RECEIVED|STORED|QUARANTINED|DISPOSED|SHIPPED,,no,,
+lot_state_history,event_ts,TIMESTAMP,yes,,,no,,Non-decreasing per lot
+lot_state_history,reason,STRING,yes,RECEIPT|PUTAWAY|ALARM_HOLD|DISPOSAL|RELEASED_FROM_HOLD|SHIPMENT,,no,,
+lot_state_history,remediation_id,STRING,no,,,no,FK -> remediation.remediation_id,

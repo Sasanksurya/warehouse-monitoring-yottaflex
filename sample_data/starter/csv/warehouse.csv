@@ -1,0 +1,3 @@
+warehouse_id,name,city,country,utc_offset_minutes,floor_area_sqm,status,commissioned_date
+WH-001,Hyderabad Distribution Centre,Hyderabad,IN,330,22826,ACTIVE,2024-01-18
+WH-002,Bengaluru Distribution Centre,Bengaluru,IN,330,25161,ACTIVE,2021-07-31
