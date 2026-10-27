@@ -323,7 +323,7 @@ def markdown(res: dict) -> str:
 
 def write_reports(res: dict, out_dir: str):
     os.makedirs(os.path.join(out_dir, "reports"), exist_ok=True)
-    with open(os.path.join(out_dir, "reports", "evaluation_report.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(out_dir, "reports", "evaluation_report.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(res, f, indent=1)
-    with open(os.path.join(out_dir, "reports", "evaluation_report.md"), "w", encoding="utf-8") as f:
+    with open(os.path.join(out_dir, "reports", "evaluation_report.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write(markdown(res))

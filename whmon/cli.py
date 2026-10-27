@@ -84,7 +84,7 @@ def _reproduce(a):
         other = argparse.Namespace(**{**vars(a), "seed": a.seed + 1})
         m3 = _generate(other, out=os.path.join(work, "run_other_seed"), quiet=True)
         report["other_seed_differs"] = m3["files"]["csv/sensor_reading.csv"]["sha256"] != m1["files"]["csv/sensor_reading.csv"]["sha256"]
-    with open(a.report, "w", encoding="utf-8") as f:
+    with open(a.report, "w", encoding="utf-8", newline="\n") as f:
         json.dump(report, f, indent=1)
     ok = report["identical_row_counts"] and report["identical_file_checksums"]
     print(f"[reproduce] row counts identical: {report['identical_row_counts']}; all {report['files_compared']} file checksums identical: "

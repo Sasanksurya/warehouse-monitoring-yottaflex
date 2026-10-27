@@ -83,19 +83,19 @@ def export_json(w, out):
     os.makedirs(f"{out}/json", exist_ok=True)
     for t in TABLES:
         if t.name == "sensor_reading":
-            with open(f"{out}/json/{t.name}.jsonl", "w", encoding="utf-8") as f:
+            with open(f"{out}/json/{t.name}.jsonl", "w", encoding="utf-8", newline="\n") as f:
                 for row in iter_table(w, t.name):
                     f.write(json.dumps({c: row.get(c) for c in t.names}, separators=(",", ":")) + "\n")
         else:
-            with open(f"{out}/json/{t.name}.json", "w", encoding="utf-8") as f:
+            with open(f"{out}/json/{t.name}.json", "w", encoding="utf-8", newline="\n") as f:
                 json.dump([{c: row.get(c) for c in t.names} for row in iter_table(w, t.name)], f, indent=1)
 
 
 def export_sql(w, out, batch=500):
     os.makedirs(f"{out}/sql", exist_ok=True)
-    with open(f"{out}/sql/schema.sql", "w", encoding="utf-8") as f:
+    with open(f"{out}/sql/schema.sql", "w", encoding="utf-8", newline="\n") as f:
         f.write(ddl())
-    with open(f"{out}/sql/seed.sql", "w", encoding="utf-8") as f:
+    with open(f"{out}/sql/seed.sql", "w", encoding="utf-8", newline="\n") as f:
         f.write("PRAGMA foreign_keys = ON;\nBEGIN;\n")
         for t in TABLES:
             buf = []
@@ -138,31 +138,31 @@ def export_ground_truth(w, out):
         wr.writerow(TRUTH_COLS)
         for t in w.truth:
             wr.writerow([t.get(c, "") for c in TRUTH_COLS])
-    with open(f"{out}/ground_truth/ground_truth.json", "w", encoding="utf-8") as f:
+    with open(f"{out}/ground_truth/ground_truth.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump([{**{c: t.get(c, "") for c in TRUTH_COLS}, "details": json.loads(t["details"])} for t in w.truth], f, indent=1)
 
 
 def export_docs(w, out):
     os.makedirs(f"{out}/docs", exist_ok=True)
-    with open(f"{out}/docs/data_dictionary.md", "w", encoding="utf-8") as f:
+    with open(f"{out}/docs/data_dictionary.md", "w", encoding="utf-8", newline="\n") as f:
         f.write(data_dictionary_markdown())
     rows = list(data_dictionary_rows())
     with open(f"{out}/docs/data_dictionary.csv", "w", newline="", encoding="utf-8") as f:
         wr = csv.DictWriter(f, fieldnames=list(rows[0].keys()), lineterminator="\n")
         wr.writeheader()
         wr.writerows(rows)
-    with open(f"{out}/docs/schema.sql", "w", encoding="utf-8") as f:
+    with open(f"{out}/docs/schema.sql", "w", encoding="utf-8", newline="\n") as f:
         f.write(ddl())
-    with open(f"{out}/docs/monitoring_rules.json", "w", encoding="utf-8") as f:
+    with open(f"{out}/docs/monitoring_rules.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump({"rules": RULES,
                    "zone_types": {k: {"temp_band_c": [v.temp_min_c, v.temp_max_c], "humidity_max_pct": v.humidity_max_pct,
                                       "max_occupancy": v.max_occupancy, "door_open_limit_s": v.door_open_limit_s}
                                   for k, v in ZONE_SPECS.items()},
                    "storage_requirements": [{"category": r[0], "temp_band_c": [r[1], r[2]], "humidity_max_pct": r[3],
                                              "max_excursion_min": r[4]} for r in REQUIREMENTS]}, f, indent=1)
-    with open(f"{out}/docs/injection_rates.json", "w", encoding="utf-8") as f:
+    with open(f"{out}/docs/injection_rates.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump(RATES, f, indent=1)
-    with open(f"{out}/docs/source_manifest.json", "w", encoding="utf-8") as f:
+    with open(f"{out}/docs/source_manifest.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump({"external_data_used": False,
                    "note": "All data is synthetic, generated from documented rules and a fixed seed. No third-party dataset, "
                            "scraped content or personal information is used; public reference ranges (e.g. cold-chain "
@@ -177,7 +177,7 @@ def write_manifest(w, out, counts, command):
             if n == "manifest.json" or n.endswith(".db"):
                 continue
             p = os.path.join(root, n)
-            files[os.path.relpath(p, out)] = {"bytes": os.path.getsize(p), "sha256": _sha(p)}
+            files[os.path.relpath(p, out).replace(os.sep, "/")] = {"bytes": os.path.getsize(p), "sha256": _sha(p)}
     manifest = {
         "generator_command": command, "seed": w.cfg.seed, "scale": w.cfg.scale.__dict__ | {"zones": w.cfg.scale.zones,
                                                                                          "sensors": w.cfg.scale.sensors},
@@ -185,7 +185,7 @@ def write_manifest(w, out, counts, command):
         "row_counts": counts, "ground_truth_rows": len(w.truth),
         "python": platform.python_version(), "files": dict(sorted(files.items())),
     }
-    with open(f"{out}/manifest.json", "w", encoding="utf-8") as f:
+    with open(f"{out}/manifest.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump(manifest, f, indent=1)
     return manifest
 

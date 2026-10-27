@@ -393,7 +393,7 @@ def _semantic(rep, d, per_sensor, n_steps, period_end):
 
 def write_reports(rep: Report, out_dir: str):
     os.makedirs(os.path.join(out_dir, "reports"), exist_ok=True)
-    with open(os.path.join(out_dir, "reports", "validation_report.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(out_dir, "reports", "validation_report.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(rep.to_dict(), f, indent=1, default=str)
-    with open(os.path.join(out_dir, "reports", "validation_summary.md"), "w", encoding="utf-8") as f:
+    with open(os.path.join(out_dir, "reports", "validation_summary.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write(rep.markdown())
